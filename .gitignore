@@ -1,0 +1,22 @@
+# Credentials and local state
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+*service-account*.json
+*credentials*.json
+# Build / dependency artifacts
+node_modules/
+.next/
+out/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.tsbuildinfo
+# Keep photographs and private datasets out of the public repository
+uploads/
+local-data/
+.DS_Store
