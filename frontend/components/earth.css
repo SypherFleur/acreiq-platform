@@ -1,0 +1,90 @@
+.earth-view[hidden] { display: none; }
+.earth-view { min-width: 0; }
+.earth-address-search { margin-bottom: 18px; min-width: 0; }
+.earth-address-form { display: flex; align-items: center; gap: 8px; }
+.earth-address-input { display: flex; flex: 1; align-items: center; gap: 10px; min-width: 0; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--input); padding: 0 12px; }
+.earth-address-input > svg { color: var(--muted); flex-shrink: 0; }
+.earth-address-input input { width: 100%; min-width: 0; height: 42px; border: 0; outline-offset: -2px; background: transparent; }
+.earth-address-form > button { flex-shrink: 0; }
+.earth-search-privacy { color: var(--muted); font-size: 11px; margin-top: 6px; }
+.earth-address-feedback { display: flex; align-items: flex-start; gap: 8px; margin-top: 8px; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+.earth-address-feedback svg { flex-shrink: 0; }
+.earth-address-feedback small { display: block; color: var(--amber); margin-top: 4px; }
+.earth-address-results { margin-top: 12px; border-top: 1px solid var(--line); }
+.earth-address-results > p { font-size: 12px; color: var(--muted); margin-top: 8px; }
+.earth-address-result { display: flex; align-items: flex-start; gap: 10px; width: 100%; padding: 10px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.earth-address-result:hover { background: var(--input); }
+.earth-address-result svg { flex-shrink: 0; color: var(--cyan); margin-top: 2px; }
+.earth-address-result span { overflow-wrap: anywhere; }
+.earth-address-result small { display: block; font-size: 11px; color: var(--muted); margin-top: 3px; }
+.earth-address-attribution { font-family: Arial, sans-serif; font-weight: 400; font-style: normal; font-size: 12px; letter-spacing: 0; white-space: nowrap; color: white; margin-top: 8px; }
+.earth-location { display: grid; gap: 12px; align-content: start; }
+.earth-precise > summary { cursor: pointer; font-size: 12px; color: var(--muted); padding: 8px 0; }
+.earth-precise > summary small { color: var(--muted); }
+.earth-precise[open] > summary { margin-bottom: 8px; }
+.earth-toolbar { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 0 0 14px; }
+.earth-toolbar .segmented { display: flex; }
+.earth-status { color: var(--muted); font-size: 12px; }
+.earth-layout { display: grid; grid-template-columns: minmax(0, 1fr) 300px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.earth-map-surface { position: relative; min-width: 0; height: 620px; background: var(--scene); }
+.earth-google-map { width: 100%; height: 100%; color-scheme: light; color: #202124; }
+.earth-google-map img { max-width: none; display: initial; }
+.earth-google-map button { color: initial; }
+.earth-google-map .earth-pin { color: var(--cyan); }
+.earth-google-map .earth-pin.selected { color: var(--lime); }
+.earth-map-message { height: 100%; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; padding: 28px; text-align: center; }
+.earth-map-message > svg { color: var(--cyan); }
+.earth-map-message h2 { font-size: 20px; }
+.earth-map-message p { max-width: 420px; }
+.earth-inspector { padding: 18px; border-left: 1px solid var(--line); min-width: 0; height: 620px; overflow-y: auto; }
+.earth-inspector .field { display: flex; flex-direction: column; gap: 6px; }
+.earth-inspector input, .earth-inspector select { background: var(--input); border: 1px solid var(--line-strong); border-radius: 4px; min-width: 0; width: 100%; padding: 9px 10px; }
+.earth-inspector .field > span { display: flex; justify-content: space-between; }
+.earth-inspector small { color: var(--muted); font-size: 11px; }
+.earth-coordinates, .earth-site-links { display: grid; gap: 12px; }
+.earth-site-links { margin-top: 20px; border-top: 1px solid var(--line); padding-top: 18px; }
+.earth-create-site { display: grid; gap: 10px; padding-bottom: 16px; border-bottom: 1px solid var(--line); }
+.earth-create-site p, .earth-site-links > p, .earth-origin-recovery { font-size: 12px; color: var(--muted); }
+.earth-origin-recovery p { margin: 10px 0; }
+.earth-origin-recovery a { color: var(--cyan); }
+.earth-comparison-summary { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 8px; font-size: 12px; }
+.earth-comparison-summary p { overflow-wrap: anywhere; }
+.earth-comparison-summary dl { display: grid; gap: 10px; }
+.earth-comparison-summary dl > div { display: flex; justify-content: space-between; gap: 12px; }
+.earth-comparison-summary dd { text-align: right; }
+.earth-comparison-summary dd small { display: block; }
+.earth-comparison-summary code { overflow-wrap: anywhere; font-size: 10px; }
+.earth-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+.earth-inspector button { white-space: normal; text-align: left; }
+.earth-selected { color: var(--cyan); font-size: 12px; overflow-wrap: anywhere; }
+.earth-selected span { display: block; color: var(--muted); }
+.earth-associated { display: grid; gap: 6px; padding: 12px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 12px; }
+.earth-associated strong { color: var(--lime); }
+.earth-site-id { font-size: 11px; overflow-wrap: anywhere; color: var(--muted); }
+.earth-warning { font-size: 12px; color: var(--amber); }
+.earth-error { color: var(--danger); font-size: 12px; }
+.earth-notice { color: var(--lime); padding-top: 14px; }
+.earth-boundary { font-size: 12px; margin-top: 16px; }
+.earth-configuration { color: var(--muted); margin-top: 12px; font-size: 12px; }
+.earth-configuration p { margin-top: 8px; max-width: 850px; }
+.earth-configuration code { overflow-wrap: anywhere; }
+.earth-pin-anchor { position: absolute; z-index: 1; }
+.earth-pin { width: 40px; height: 44px; transform: translate(-50%, -100%); display: grid; place-items: center; filter: drop-shadow(0 1px 3px #0009); }
+.earth-text-button { color: var(--lime); text-decoration: underline; }
+@media (max-width: 900px) {
+  .earth-layout { grid-template-columns: minmax(0, 1fr); }
+  .earth-map-surface { height: 440px; }
+  .earth-inspector { border-left: 0; border-top: 1px solid var(--line); height: auto; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .earth-site-links { margin-top: 0; border-top: 0; padding-top: 0; }
+}
+@media (max-width: 560px) {
+  .earth-address-form { flex-wrap: wrap; }
+  .earth-address-input { flex-basis: calc(100% - 44px); }
+  .earth-address-form > .secondary-button { width: 100%; justify-content: center; }
+  .earth-toolbar { flex-wrap: wrap; gap: 8px; }
+  .earth-map-surface { height: 380px; }
+  .earth-map-message { padding: 18px; }
+  .earth-map-message h2 { font-size: 18px; }
+  .earth-inspector { grid-template-columns: minmax(0, 1fr); padding: 16px 0; }
+  .earth-site-links { padding-top: 18px; border-top: 1px solid var(--line); }
+}

@@ -1,0 +1,40 @@
+.measurement-record {
+  min-width: 0;
+  max-width: 100%;
+  margin-top: 14px;
+  border-top: 1px solid var(--line);
+  color: var(--secondary);
+  font-family: var(--font-body);
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.measurement-record, .measurement-record * { letter-spacing: 0; }
+.measurement-record > summary { min-height: 44px; padding: 12px 0; cursor: pointer; }
+.measurement-record > summary::marker { color: var(--muted); }
+.measurement-record > summary > span { display: inline-block; margin-left: 8px; color: var(--muted); font-size: 10px; }
+.measurement-record > summary:hover, .measurement-record[open] > summary { color: var(--text); }
+.measurement-record-body { display: grid; min-width: 0; gap: 12px; padding-bottom: 14px; }
+.measurement-record-body p { min-width: 0; margin: 0; }
+.measurement-record-value strong { color: var(--text); font-weight: 500; font-variant-numeric: tabular-nums; }
+.measurement-record-fields { display: grid; min-width: 0; gap: 12px; margin: 0; padding: 0; border: 0; }
+.measurement-record .input-wrap { height: 40px; }
+.measurement-record .input-wrap input { max-width: 100%; }
+.measurement-record textarea { width: 100%; min-width: 0; max-width: 100%; padding: 8px; border: 1px solid var(--line-strong); border-radius: 4px; background: var(--input); color: var(--text); font: inherit; resize: vertical; }
+.measurement-record textarea:disabled { cursor: not-allowed; opacity: 0.46; }
+.measurement-record-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.measurement-record-actions button { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: 40px; max-width: 100%; padding: 8px 10px; border: 1px solid var(--line-strong); border-radius: 4px; color: var(--secondary); font: inherit; }
+.measurement-record-actions button:hover:not(:disabled) { background: var(--raised); color: var(--text); }
+.measurement-record-actions button > svg { flex-shrink: 0; }
+.measurement-record-actions .measurement-record-remove { flex: 0 0 40px; width: 40px; height: 40px; padding: 0; }
+.measurement-record-time { color: var(--muted); font-variant-numeric: tabular-nums; }
+.measurement-record-stale { color: var(--amber); }
+.measurement-record-error { color: var(--danger); }
+.measurement-record > summary:focus-visible, .measurement-record-actions button:focus-visible, .measurement-record textarea:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; }
+
+@media (max-width: 600px) {
+  .measurement-record .input-wrap { height: 44px; }
+  .measurement-record-actions button { min-height: 44px; }
+  .measurement-record-actions .measurement-record-remove { flex-basis: 44px; width: 44px; height: 44px; }
+}

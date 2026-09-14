@@ -1,0 +1,446 @@
+{
+  "schema_version": "acreiq-earth-tested-source/1.0.0",
+  "url": "http://127.0.0.1:3007",
+  "build_id": "gkWdlBO6ZYNhqJRqGisnr",
+  "local_head": "022bb6c06266acd75bf7196cf21500ba126f90ce",
+  "source_sha256": "0568a196e71ea47613d38fb7f3b6f33baa3caabf1aaf10b95a12765426e48509",
+  "source_identity_method": "sha256 of locale-sorted UTF-8 path + NUL + file SHA256 + LF; only the explicit frontend/backend source, tests and templates below",
+  "baseline": "docs/checkpoints/site-comparison/source-manifest.json",
+  "scope": "103 explicit source, test and template files. Private configuration, dependencies, builds and runtime evidence are excluded.",
+  "verification": "Consult README.md for actual test outcomes and the live Google imagery acceptance gate.",
+  "earth_modified_paths": [
+    "frontend/.env.example",
+    "frontend/app/page.tsx",
+    "frontend/components/SiteScenarioComparison.tsx",
+    "frontend/tsconfig.json"
+  ],
+  "earth_added_paths": [
+    "frontend/app/api/earth/maps-config/route.ts",
+    "frontend/components/earth.css",
+    "frontend/components/EarthAddressSearch.tsx",
+    "frontend/components/EarthView.tsx",
+    "frontend/components/GoogleSatelliteMap.tsx",
+    "frontend/lib/earth-sites.ts",
+    "frontend/lib/earth-address.ts",
+    "frontend/lib/google-maps.ts",
+    "frontend/tests/earth-sites.spec.ts",
+    "frontend/tests/earth-address.spec.ts",
+    "frontend/tests/earth.spec.ts",
+    "scripts/verify-earth-google.cjs",
+    "scripts/verify-earth-address.cjs"
+  ],
+  "files": [
+    {
+      "path": "backend/__init__.py",
+      "sha256": "9f2f2b20a6304816926766f3f1ead5ada52eb92ca10e6d7f51dfd629cb0ea192"
+    },
+    {
+      "path": "backend/.dockerignore",
+      "sha256": "b24a07ab60f8442cf5ce6e7bbf45f5c0cf0c7eda7e693cff44e645bfcf21bb64"
+    },
+    {
+      "path": "backend/.env.example",
+      "sha256": "c531be3f87fe38974146ec20e1ccd6ecc34cfec931f1e19218f8c71a7c002b09"
+    },
+    {
+      "path": "backend/.gitignore",
+      "sha256": "590abd95c1ff3985a9d966ebaa8a5525b8f6d67e2c8c89c177514bc7c21a5b5b"
+    },
+    {
+      "path": "backend/core.py",
+      "sha256": "89496df201391455498622408543c5cff6da84de27c6d99420a78bc88d4b8c98"
+    },
+    {
+      "path": "backend/Dockerfile",
+      "sha256": "7068021ac3948078da4bf7dd6b4f2ded41f039c548b90c1365e2818a6edf4e53"
+    },
+    {
+      "path": "backend/live_tools.py",
+      "sha256": "1f1323d9a9130d33a3d77d3e7fd8e76108a1ce9987f661964c2aabee103a3f31"
+    },
+    {
+      "path": "backend/live.py",
+      "sha256": "61487d903cbe97d5529953fcee00bcf359f8781c84264dd221101baa5e7f849f"
+    },
+    {
+      "path": "backend/main.py",
+      "sha256": "42a9242117f07e850ed6cbd1e6ce168cff23b61260073b75d442dffee13549ad"
+    },
+    {
+      "path": "backend/pytest.ini",
+      "sha256": "6a3d4d12626a30a43f479bab02cf01949332076958214d881f29ad4668ce7e39"
+    },
+    {
+      "path": "backend/README.md",
+      "sha256": "cccee6ba88cebe3a1af5d55213bf8e3fad7d21431a39684116d5c2c4ee9e94fd"
+    },
+    {
+      "path": "backend/requirements-dev.txt",
+      "sha256": "582cdf0ba12cfc637a1b8511dbc16d8a1154c92f8627923af3abbc09504a3e29"
+    },
+    {
+      "path": "backend/requirements.txt",
+      "sha256": "f3975db8f67bb200e9a9779c31379549c9f4ab80a7b27afbcfb11576596790d5"
+    },
+    {
+      "path": "backend/run_evidence.py",
+      "sha256": "10a02c03b7ecef94257b11a7110fbd4d32b4a78a89842257690d49fa8b0eec12"
+    },
+    {
+      "path": "backend/schemas.py",
+      "sha256": "9fedc25e1dcae04e511691164e6ff73d9aa54b8a2dc55356ce735fa6471ab11a"
+    },
+    {
+      "path": "backend/site_comparison.py",
+      "sha256": "7fb6ebc90b7d2b752d0c28d62f4d68aa8683304c8ad1fd18b1ed41b718624996"
+    },
+    {
+      "path": "backend/site_fixture.py",
+      "sha256": "e7c72792e910c3e9e73d6c2df3233894d30a638bdb7e94ba5dede8df6fe7d8a6"
+    },
+    {
+      "path": "backend/site_schemas.py",
+      "sha256": "8f68c571c5f62de50f4f12e4348c967f2b83d03023d0a275b0f5c4cdc0c19a01"
+    },
+    {
+      "path": "backend/tests/conftest.py",
+      "sha256": "0853b702b11221d9eae8a269eee7e9c12b2db6bd8a7c2579b4ef93ec267b77b0"
+    },
+    {
+      "path": "backend/tests/live_contract_driver.py",
+      "sha256": "c3287ee74527af5f364d3d39e81e7772216167c3085b017b4e8413586ab779d4"
+    },
+    {
+      "path": "backend/tests/test_api.py",
+      "sha256": "2e311cb932ab4856bf630d6af8cfc573f3850a04183fdb260211a98006ccd763"
+    },
+    {
+      "path": "backend/tests/test_core.py",
+      "sha256": "b9a5340604644190dd4bbefc2b44dda3eb5fa68560cd89fa36c1d4cb7451f8a6"
+    },
+    {
+      "path": "backend/tests/test_live_design.py",
+      "sha256": "c9a424f238551e5893981d29aa3db91c79d4be88dee84390111d41b3f1297046"
+    },
+    {
+      "path": "backend/tests/test_live_photo_checkpoint.py",
+      "sha256": "becdcda889e0dcd0dd6ec4326fcad2ae2a2e919f166f61c56f6ae5579f1460cc"
+    },
+    {
+      "path": "backend/tests/test_live_relay.py",
+      "sha256": "7136fe594c2ab6384a09685f042df3f78345398065b7adf57c326c6860a1770f"
+    },
+    {
+      "path": "backend/tests/test_live_result_evidence.py",
+      "sha256": "2e4a3c03ffc67d37b15f2e0e121f59320037e7090d04bda487c6f6b135741f7e"
+    },
+    {
+      "path": "backend/tests/test_live_tools.py",
+      "sha256": "33ec99f23c75a689812a329f6e7e9ed54b877b2e6f91eb050d3c77593fc8cc0e"
+    },
+    {
+      "path": "backend/tests/test_run_evidence.py",
+      "sha256": "0afb9b6803ac67997a01ab6054523c7171ee3f67f1f994886228e5748c27ff8f"
+    },
+    {
+      "path": "backend/tests/test_site_comparison.py",
+      "sha256": "c22fc1d892465910178693cfd559d8b8988b06939c25242d5ee28418b0cff941"
+    },
+    {
+      "path": "backend/tests/test_site_reference.py",
+      "sha256": "ba572de38fcaa99980cd8989eaa26aca283095c6a2899f40244d901028eadffa"
+    },
+    {
+      "path": "backend/tests/test_vision.py",
+      "sha256": "ee838b5f5e2909ff166777b78b044c785ff78c7d114bc90dfb5ae0910a279052"
+    },
+    {
+      "path": "backend/vision.py",
+      "sha256": "eb4afe2bdb7bc059b6ab0e888c4465e2203a2580bddfb28f92e41179eec655d2"
+    },
+    {
+      "path": "frontend/.dockerignore",
+      "sha256": "001b77b43000436ca8f1ce212cd01c679377f9280e4e4aa40cb098fbcbb51ce6"
+    },
+    {
+      "path": "frontend/.env.example",
+      "sha256": "daf8fffb83e6b7bafa4bb38d1d6e0b34dff39b5ee060b29bb5bea71346cc13cb"
+    },
+    {
+      "path": "frontend/app/api/[...path]/route.ts",
+      "sha256": "5e2fc35d27d69d1abbd5f6a585111b1a427628b4de016750ee0367180bc51daf"
+    },
+    {
+      "path": "frontend/app/api/earth/maps-config/route.ts",
+      "sha256": "705adb7bbe3fac5cc06a0eea8b70a4d0756355e1d5bb8d03001a2a5b4ed8125b"
+    },
+    {
+      "path": "frontend/app/api/live/session/route.ts",
+      "sha256": "0cb94872f0df0df9e39ca4ed87bb078dc2e137d80e680cdf25759dfd35d59eac"
+    },
+    {
+      "path": "frontend/app/globals.css",
+      "sha256": "9636e300dfae37bc7dab6ba883b7b0723d34305a3cd99df341891226de97c9ee"
+    },
+    {
+      "path": "frontend/app/layout.tsx",
+      "sha256": "a761ce58893ef9202b16de8e1a7b6128a22cda17f63756906988b0bda8317700"
+    },
+    {
+      "path": "frontend/app/page.tsx",
+      "sha256": "71c9b57c050ec18c0808d4585546e66c99b635c0440b372337a4a21ecc6de7e1"
+    },
+    {
+      "path": "frontend/components/earth.css",
+      "sha256": "7b0557a71ee5777679a7d46acba891faee20a6d4be65a450d9b2a40a9bf1fe0a"
+    },
+    {
+      "path": "frontend/components/EarthAddressSearch.tsx",
+      "sha256": "ae0a812a8d54c48531ca366c866b3825fb8d992b0fc8438598416ce5c71c7064"
+    },
+    {
+      "path": "frontend/components/EarthView.tsx",
+      "sha256": "49de73248bd50870938aad8779962fa47184c83aef399403557448528727eb62"
+    },
+    {
+      "path": "frontend/components/GoogleSatelliteMap.tsx",
+      "sha256": "06ea602f0152f6e07364e8ff887a80869276c68f0f84aac64dde79b2871ff839"
+    },
+    {
+      "path": "frontend/components/LiveDraftReview.tsx",
+      "sha256": "f7dbdcc7de2054124131903cfac96f1e243a3cb0679f0b4db23e14289555e2ab"
+    },
+    {
+      "path": "frontend/components/LivePanel.tsx",
+      "sha256": "6654558cfcfb51719e9d260269d5de165e4fe168e1181e993b75b737183e1e48"
+    },
+    {
+      "path": "frontend/components/measurement-record.css",
+      "sha256": "3af59677cebf6fd1cfd32d932f37f2da6d5c2187b46ffbfc0cd045ceec1a2292"
+    },
+    {
+      "path": "frontend/components/MeasurementRecord.tsx",
+      "sha256": "5fb25e2c2c19b5cb0990d10f3a6b24567db328a299b007e69992a0278451ea27"
+    },
+    {
+      "path": "frontend/components/ProposalReview.tsx",
+      "sha256": "cb52e0e2d0250ab4c1a836d3f0101c9a0f527c867888d2b61acd5643e47e93a0"
+    },
+    {
+      "path": "frontend/components/result-explanation.css",
+      "sha256": "e625171703372859cc6fb1e64eb8857861a1f9e2d3437d1823acd2271fca3f19"
+    },
+    {
+      "path": "frontend/components/ResultExplanation.tsx",
+      "sha256": "872a1f620ca2785d493b09f3f1ab8eff9c0951ef753e015459d01cfb7e2753ab"
+    },
+    {
+      "path": "frontend/components/site-comparison.css",
+      "sha256": "5e4679c0a67445e66d3bcb3e7d48ae2f493e00189957be30735d766702109368"
+    },
+    {
+      "path": "frontend/components/SiteComparisonResults.tsx",
+      "sha256": "e8f7d6ab408afc55b4bf29e8adc6020b7a94cbad17891dc44e59c201031e5a5d"
+    },
+    {
+      "path": "frontend/components/SiteComparisonTwin.tsx",
+      "sha256": "f97cb77fa413063b79b1ceeae532c246d820d2fce34266291b91b7717715e462"
+    },
+    {
+      "path": "frontend/components/SiteScenarioComparison.tsx",
+      "sha256": "d102b15b37f9b4a92100ba281cb74e21dea0fca1e2c271d90ad265b585ddffc8"
+    },
+    {
+      "path": "frontend/components/SiteScenarioEditor.tsx",
+      "sha256": "15c8de07120cafbcc0c6d832b49a663bbb68a4e77eee51f17d37d727c83620b3"
+    },
+    {
+      "path": "frontend/components/SiteScenarioFields.tsx",
+      "sha256": "87294a0714f2433e91a35f9aa6af992c3a087fbfcd9d09907031294c6ac15183"
+    },
+    {
+      "path": "frontend/components/spatial-twin-geometry.ts",
+      "sha256": "0783f6e74f2f73c35eb6d9235d214c6d313aecaf532e681a11b360a7a532515a"
+    },
+    {
+      "path": "frontend/components/spatial-twin-scene.ts",
+      "sha256": "4418f3a7690341aa2b81324aaa9cc22f208dd3982ea9bab488ed9a188aa8dfa6"
+    },
+    {
+      "path": "frontend/components/SpatialTwin.tsx",
+      "sha256": "67ef2e9b7e50c73fee398fd55784fb62f2f57ce9fb4d182bb82bb95a49821539"
+    },
+    {
+      "path": "frontend/Dockerfile",
+      "sha256": "a59f5ab7df1283f54aa9d6cb2a67d1c6e9a75ef112c7aef9058b893d16e1c455"
+    },
+    {
+      "path": "frontend/lib/candidate-identity.ts",
+      "sha256": "202c3bdf62f2263fea226699b98b269092d1ca1b5879678e97ec1e05e7c93286"
+    },
+    {
+      "path": "frontend/lib/earth-address.ts",
+      "sha256": "1bffe017f5d8bc7912fa8125fa1c4c985fdbd1372f06e0660b72dcc60af0b39e"
+    },
+    {
+      "path": "frontend/lib/earth-sites.ts",
+      "sha256": "29014ec7fc6748ef8828becc29d78260901426148011258f0036dc8abe3ede42"
+    },
+    {
+      "path": "frontend/lib/google-maps.ts",
+      "sha256": "dc1c43beba482a9895dd31a1f9e3fb09ab26fb82cc223668766ff44d3a2e31ba"
+    },
+    {
+      "path": "frontend/lib/input-records.ts",
+      "sha256": "0c98ef8bdc1d25a2782350cac075b51a1c2c825179576bc6ef23bf9a5250cfdc"
+    },
+    {
+      "path": "frontend/lib/live/audio.ts",
+      "sha256": "a55f6cf7504175b0677ae6b200848cfa3dced1a77ee3513435c391273719d9ad"
+    },
+    {
+      "path": "frontend/lib/live/design.ts",
+      "sha256": "b35119ca02ba58ade1ae902bb3547c9d8ee474ccb083a434943f46d5469c7098"
+    },
+    {
+      "path": "frontend/lib/live/receipt.ts",
+      "sha256": "6235f80f2466f2567a3472ab1e50b65282056a92addba8bb40618b728242e0aa"
+    },
+    {
+      "path": "frontend/lib/live/types.ts",
+      "sha256": "f9f209118bcaf724ff440aeebe7893dcc69b2ef447dcc0a11b8c8967bb7aa319"
+    },
+    {
+      "path": "frontend/lib/run-export.ts",
+      "sha256": "0df44a774cb98a523a8f95bf7a67b29964a5196e38fe9ba4e14489bfefeb351b"
+    },
+    {
+      "path": "frontend/lib/run-history.ts",
+      "sha256": "cd6cf11a9ac9c086db97c220d98b95f7fe0b64c9b2756e62e4fa01ea94842d3a"
+    },
+    {
+      "path": "frontend/lib/sample.ts",
+      "sha256": "162f3c3abb243646e9f4a7c1fdbaa965138873970c8a444549c748da052a245d"
+    },
+    {
+      "path": "frontend/lib/site-comparison-export.ts",
+      "sha256": "f1780083cfe202da2c3758f0c4034cc786f994efef1a72edbe3709f5f01f1b52"
+    },
+    {
+      "path": "frontend/lib/site-comparison-storage.ts",
+      "sha256": "7503eb15145787311e3cfbf9f1c4387aa224423c05df82e439a067dbdebdff67"
+    },
+    {
+      "path": "frontend/lib/site-comparison.ts",
+      "sha256": "903172794ad3087e5450e1da36edbf9c08961026319322f5d7a380bd7d733c76"
+    },
+    {
+      "path": "frontend/lib/site-types.ts",
+      "sha256": "724ed727fe4ff516347c980740b04d44ff6f0f8a020660a085ed4a200fd09ad0"
+    },
+    {
+      "path": "frontend/lib/types.ts",
+      "sha256": "4fb324f7f902e5e2c04bf8537f2236ad16d059dbfb5fe93a746fbe77a0cfe11d"
+    },
+    {
+      "path": "frontend/next.config.ts",
+      "sha256": "e9b304bdf30dd3334441db0aaca49be6f47d207c1cecc2dd8222c0cd80926944"
+    },
+    {
+      "path": "frontend/package-lock.json",
+      "sha256": "dc1ad0295e1230aac0b5133ee0416d0716f0b206426fa51f64ec8b9c5dcf9540"
+    },
+    {
+      "path": "frontend/package.json",
+      "sha256": "0aedc735b046e088cd9ec5a43838908a3997cc6a65735278f150bf0c54002425"
+    },
+    {
+      "path": "frontend/playwright.config.ts",
+      "sha256": "4a12134414f8b62cda347f28dacb5d609699ce2fe749dfce6fdfcabe7ba87e08"
+    },
+    {
+      "path": "frontend/public/live-capture-worklet.js",
+      "sha256": "880f476886aa4f30ced89b9310a29efe1f1de329d7a2460245c3d11fe84a5188"
+    },
+    {
+      "path": "frontend/tests/audit-fixes.spec.ts",
+      "sha256": "85940490c059161f57a0c730b5539baf03e79ce9011720c56d3ded8fd92b3dcb"
+    },
+    {
+      "path": "frontend/tests/design-state.spec.ts",
+      "sha256": "13095d39a5dcac055bc3429313fedf0907cf1f03e381411d55c3606a59bcf613"
+    },
+    {
+      "path": "frontend/tests/earth-address.spec.ts",
+      "sha256": "556dcc4cd201a3c036eeb57411484048cafff455950033c1127183ba0e0095ff"
+    },
+    {
+      "path": "frontend/tests/earth-sites.spec.ts",
+      "sha256": "db75872326869c5f26a087587eba54d3c29d8cbb8e1f751b14006337d11bf456"
+    },
+    {
+      "path": "frontend/tests/earth.spec.ts",
+      "sha256": "172f924af47ba983c5c7ba2c0784121fc7d118603b4890ef20315b5eb5929a42"
+    },
+    {
+      "path": "frontend/tests/input-records.spec.ts",
+      "sha256": "f6eccb0a8d9273def06d877d6b87517025302bd978f9125e00f4965d733ac3a1"
+    },
+    {
+      "path": "frontend/tests/integrity.spec.ts",
+      "sha256": "14b9250bf0549ac5b4e87586687513f0ec6240a4c162d5ebcb6a3d7c547f8a11"
+    },
+    {
+      "path": "frontend/tests/live-audio.spec.ts",
+      "sha256": "4652342d6687fe1f298e05f7b5d536f174acae3cf7cdef1a0f3e5bb1e870c098"
+    },
+    {
+      "path": "frontend/tests/live-receipt.spec.ts",
+      "sha256": "123b25614f1114c8e648ef7c989b9701f8510393b28e3990055d9ce245d4e97f"
+    },
+    {
+      "path": "frontend/tests/live.spec.ts",
+      "sha256": "f7f7842a6ae72b5edd9ba56926928863fbd5a44b6a6e5d6fc8bf3c3f98435832"
+    },
+    {
+      "path": "frontend/tests/resilience.spec.ts",
+      "sha256": "e42622fe149d5fe0d92807316946cf26eb1a97fcf9e91f4cb84005d081ded91f"
+    },
+    {
+      "path": "frontend/tests/result-evidence.spec.ts",
+      "sha256": "f4a166d831c409e2cf5767f8656594425bef4c5925427f8344116029961455aa"
+    },
+    {
+      "path": "frontend/tests/run-export.spec.ts",
+      "sha256": "58bfd4b9839f78ac67031c878965414e119b42d801d419e209bca0312f1cebca"
+    },
+    {
+      "path": "frontend/tests/site-comparison-storage.spec.ts",
+      "sha256": "12869aff28533c9e80fcac559a3481d3c06074375ca7c22060dfce278e1ff5bf"
+    },
+    {
+      "path": "frontend/tests/site-comparison.spec.ts",
+      "sha256": "1942ab1b397b3addb0533759fa5d2c184784fad8d20190f3f70d76695bf1239f"
+    },
+    {
+      "path": "frontend/tests/test-support.ts",
+      "sha256": "91ced76f73dec6fbefc90d9b91f617cf173547ca86f71d3a7040bd2ab324f3cb"
+    },
+    {
+      "path": "frontend/tests/workspace.spec.ts",
+      "sha256": "dce33c80b292bde78a5a1826f9b8120656ede02d63193c9476ddaab3e854f9f4"
+    },
+    {
+      "path": "frontend/tsconfig.json",
+      "sha256": "097ef75f28505b1355a90efba89f992656acd863b762c4ceba17d6103e51c6c9"
+    },
+    {
+      "path": "scripts/verify-earth-address.cjs",
+      "sha256": "1b24aa0d2b7834371e02da70f838b55008394c0fcfd630fda5127c81e4a4c6ef"
+    },
+    {
+      "path": "scripts/verify-earth-google.cjs",
+      "sha256": "160210905ba7a9dcddd4f40aac6a8a0a78df21995e4b72ca05c5a5fdd87154cc"
+    }
+  ]
+}

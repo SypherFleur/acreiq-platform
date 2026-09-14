@@ -1,0 +1,53 @@
+# Credentials and local configuration, including nested backend/frontend files.
+.env
+.env.*
+!.env.example
+!.env.*.example
+.secrets/
+secrets/
+credentials.json
+application_default_credentials.json
+*.pem
+*.key
+
+# Python environments and generated artifacts.
+.venv/
+venv/
+env/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+*.egg-info/
+
+# Node / Next.js.
+node_modules/
+.next/
+.next-*/
+out/
+dist/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+
+# Local launch state, diagnostics, browser checks, and generated reports.
+/.acreiq-local/
+/.runtime/
+/logs/
+*.log
+*.pid
+playwright-report/
+test-results/
+test-results-*/
+
+# Editor and operating-system files.
+.DS_Store
+Thumbs.db
+Desktop.ini
+.idea/
+.vscode/
+*.swp
