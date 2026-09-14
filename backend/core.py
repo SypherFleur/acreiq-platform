@@ -1,12 +1,13 @@
 """Transparent, bounded lighting scenario model. Not a crop or CFD simulator."""
 from itertools import product
+from math import isclose, isfinite
 from typing import Literal
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-MODEL_VERSION = "lighting-scenarios-0.2.0"
+MODEL_VERSION = "lighting-scenarios-0.3.0"
 
 class StrictModel(BaseModel):
-    model_config = ConfigDict(extra="forbid", allow_inf_nan=False)
+    model_config = ConfigDict(extra="forbid", allow_inf_nan=False, strict=True)
 
 class Scenario(StrictModel):
     source: Literal["sample", "manual", "photo-assisted"] = "manual"
@@ -26,7 +27,7 @@ class Scenario(StrictModel):
     max_hours: float = Field(gt=0, le=24)
     power_limit_watts: float = Field(gt=0, le=2_000_000)
     electricity_usd_kwh: float = Field(ge=0, le=10)
-    operating_days: int = Field(default=365, ge=1, le=366)
+    operating_days: int = Field(ge=1, le=366)
     water_liters_day: float | None = Field(default=None, ge=0, le=1_000_000)
     confirmed: bool = False
 
@@ -38,6 +39,10 @@ class Scenario(StrictModel):
             raise ValueError("Minimum photoperiod must not exceed maximum photoperiod.")
         if not self.dimmable and self.baseline_dim != 1:
             raise ValueError("Non-dimmable fixtures must have a baseline dim fraction of 1.")
+        baseline_energy = daily_energy(self, self.baseline_hours, self.baseline_dim)
+        maximum_energy = daily_energy(self, self.max_hours, 1)
+        if baseline_energy <= 0 or not isfinite(100 * (maximum_energy / baseline_energy)):
+            raise ValueError("The baseline energy is too small to calculate a finite savings percentage.")
         return self
 
 SAMPLE = {
@@ -50,15 +55,23 @@ SAMPLE = {
     "water_liters_day": 15, "confirmed": False,
 }
 
+def daily_energy(s: Scenario, hours: float, dim: float) -> float:
+    return (s.lighting_watts * dim * hours + s.other_watts * s.other_hours) / 1000
+
+
+def peak_power(s: Scenario, dim: float) -> float:
+    return s.lighting_watts * dim + (s.other_watts if s.other_hours > 0 else 0)
+
+
 def calculate(s: Scenario, hours: float, dim: float) -> dict:
-    daily = (s.lighting_watts * dim * hours + s.other_watts * s.other_hours) / 1000
+    daily = daily_energy(s, hours, dim)
     period = daily * s.operating_days
     return {
         "photoperiod_hours": hours, "dim_fraction": dim,
         "daily_energy_kwh": round(daily, 6),
         "period_energy_kwh": round(period, 4),
         "period_energy_cost_usd": round(period * s.electricity_usd_kwh, 4),
-        "peak_modeled_watts": round(s.lighting_watts * dim + s.other_watts, 4),
+        "peak_modeled_watts": round(peak_power(s, dim), 4),
         "dli_mol_m2_day": round(s.ppfd_full * dim * hours * 0.0036, 6) if s.ppfd_full is not None else None,
         "period_water_liters": round(s.water_liters_day * s.operating_days, 4) if s.water_liters_day is not None else None,
         "canopy_sqft": s.canopy_sqft,
@@ -77,6 +90,8 @@ def solve(s: Scenario) -> dict:
             "PPFD must represent the crop canopy at full lighting output. A room photo cannot supply it.",
             "DLI is a screening constraint, not proof of maintained yield, plant health, or light uniformity.",
             "Dimming uses a linear light-output and power assumption. Validate against actual fixtures.",
+            "The finite search tests quarter-hour schedules plus entered bounds and baseline hours, with 50-100% output in 5% steps plus the entered baseline dim fraction. It is not a continuous or global optimum.",
+            "Peak power conservatively assumes entered active loads overlap. Loads with zero operating hours are excluded; startup surges are not modeled.",
             "Only entered loads are counted. HVAC, pump loads, tariffs and demand charges may change results.",
             "No soil, airflow, water, crop-production, layout-rearrangement or avoided-CapEx model is implemented.",
             "The visual twin is a schematic derived from confirmed inputs, not a measured 3D reconstruction.",
@@ -89,9 +104,13 @@ def solve(s: Scenario) -> dict:
         result["recommendations"] = ["Enter canopy PPFD at full output and an appropriate crop-stage DLI minimum. No savings are invented when these are unknown."]
         return result
 
-    # Finite grid, including the baseline so a feasible existing setting is not lost.
+    # Include off-grid bounds and baseline choices in the auditable finite grid.
     hours = {round(i / 4, 2) for i in range(1, 97) if s.min_hours <= i / 4 <= s.max_hours}
+    hours.update((s.min_hours, s.max_hours))
+    if s.min_hours <= s.baseline_hours <= s.max_hours:
+        hours.add(s.baseline_hours)
     dims = {round(i / 20, 2) for i in range(10, 21)} if s.dimmable else {1.0}
+    dims.add(s.baseline_dim)
     settings = set(product(hours, dims)) | {(s.baseline_hours, s.baseline_dim)}
     candidates = []
     for h, d in sorted(settings):
@@ -99,9 +118,11 @@ def solve(s: Scenario) -> dict:
         reasons = []
         if not s.min_hours <= h <= s.max_hours:
             reasons.append("photoperiod")
-        if s.ppfd_full * d * h * 0.0036 < s.min_dli - 1e-9:
+        dose = s.ppfd_full * d * h * 0.0036
+        if dose < s.min_dli and not isclose(dose, s.min_dli, rel_tol=1e-12, abs_tol=0):
             reasons.append("minimum_dli")
-        if s.lighting_watts * d + s.other_watts > s.power_limit_watts + 1e-9:
+        peak = peak_power(s, d)
+        if peak > s.power_limit_watts and not isclose(peak, s.power_limit_watts, rel_tol=1e-12, abs_tol=0):
             reasons.append("modeled_power_limit")
         candidates.append({**m, "feasible": not reasons, "rejected_for": reasons})
     feasible = [c for c in candidates if c["feasible"]]
@@ -111,13 +132,17 @@ def solve(s: Scenario) -> dict:
         result["recommendations"] = ["No tested setting satisfies your constraints. Review measurements and crop requirements; do not buy equipment based on this result alone."]
         return result
     best = min(feasible, key=lambda c: (
-        c["daily_energy_kwh"], abs(c["dim_fraction"] - s.baseline_dim),
+        daily_energy(s, c["photoperiod_hours"], c["dim_fraction"]), abs(c["dim_fraction"] - s.baseline_dim),
         abs(c["photoperiod_hours"] - s.baseline_hours)))
     optimized = {k: v for k, v in best.items() if k not in ("feasible", "rejected_for")}
-    delta = baseline["period_energy_kwh"] - optimized["period_energy_kwh"]
+    # Rank and compute savings before display rounding (tiny loads may round to zero).
+    baseline_daily = daily_energy(s, s.baseline_hours, s.baseline_dim)
+    optimized_daily = daily_energy(s, best["photoperiod_hours"], best["dim_fraction"])
+    daily_delta = baseline_daily - optimized_daily
+    delta = daily_delta * s.operating_days
     result.update(status="optimized", optimized=optimized, savings={
         "period_energy_kwh": round(delta, 4),
-        "energy_pct": round(100 * delta / baseline["period_energy_kwh"], 2),
+        "energy_pct": round(100 * (daily_delta / baseline_daily), 2) if baseline_daily else 0.0,
         "period_energy_cost_usd": round(delta * s.electricity_usd_kwh, 4),
         "water_liters": None, "yield_gain_lb": None, "avoided_capex_usd": None,
         "new_equipment_required_by_scenario_usd": 0,
